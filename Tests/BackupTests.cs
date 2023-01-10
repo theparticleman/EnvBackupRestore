@@ -1,7 +1,7 @@
 using EnvBackupRestore.Domain;
 using Moq;
 
-namespace Tests;
+namespace EnvBackupRestore.Tests;
 
 public class BackupTests
 {

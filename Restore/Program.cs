@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using EnvBackupRestore.Domain;
+
+var fileSystem = new FileSystem();
+var settings = Settings.Load();
+
+var command = new RestoreCommand(settings, fileSystem);
+
+command.Execute();

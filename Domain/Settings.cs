@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Json;
 
 namespace EnvBackupRestore.Domain;
@@ -14,7 +15,11 @@ public class Settings
 
     public static Settings Load()
     {
-        var settingsPath = "config.json";
+        var settingsPath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "config.json");
+        if (!File.Exists(settingsPath))
+        {
+            settingsPath = "config.json";
+        }
         return JsonSerializer.Deserialize<Settings>(File.ReadAllText(settingsPath), options);
     }
 }
